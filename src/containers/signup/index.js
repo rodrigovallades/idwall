@@ -3,6 +3,8 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { login } from '../../modules/login'
 
+import './signup.css'
+
 class Signup extends Component {
   constructor(props) {
     super(props);
