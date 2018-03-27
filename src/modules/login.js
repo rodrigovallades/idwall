@@ -1,5 +1,6 @@
 import userConstants from '../constants/user.constants'
 import * as userService from '../services/user.service';
+import { history } from '../store'
 
 let userToken = JSON.parse(localStorage.getItem('user'));
 const initialState = userToken ? { userToken } : { userToken: '' };
@@ -39,6 +40,7 @@ export const login = email => {
         user => {
           console.log(user)
           dispatch(success(user));
+          history.push('/feed');
         },
         error => {
           console.log(error)
