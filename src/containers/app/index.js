@@ -14,6 +14,10 @@ const App = () => (
     <main>
       <Route exact path="/" component={Signup} />
       <Route exact path="/feed" component={Feed} />
+      <Route exact path="/husky" render={(props) => ( <Feed category='husky'/> )} />
+      <Route exact path="/labrador" render={(props) => ( <Feed category='labrador'/> )} />
+      <Route exact path="/hound" render={(props) => ( <Feed category='hound'/> )} />
+      <Route exact path="/pug" render={(props) => ( <Feed category='pug'/> )} />
     </main>
   </div>
 )

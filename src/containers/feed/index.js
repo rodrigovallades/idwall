@@ -13,7 +13,7 @@ class Feed extends Component {
     super(props);
 
     this.state = {
-      category: 'husky',
+      category: this.props.category ? this.props.category : 'husky',
       selected: ''
     };
 
