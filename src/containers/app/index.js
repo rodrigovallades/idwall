@@ -1,16 +1,13 @@
 import React from 'react';
-import { Route, Link } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 
 import Signup from '../signup'
 import Feed from '../feed'
 
-const App = () => (
-  <div>
-    <header>
-      <Link to="/">Home</Link>
-      <Link to="/feed">Feed</Link>
-    </header>
+import './app.css'
 
+const App = () => (
+  <div className='wrapper'>
     <main>
       <Route exact path="/" component={Signup} />
       <Route exact path="/feed" component={Feed} />

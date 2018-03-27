@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+
 import { getDogs } from '../../modules/feed'
 import { history } from '../../store'
 import Dog from '../../components/DogCard'
@@ -46,6 +48,12 @@ class Feed extends Component {
   render() {
     return (
       <div>
+        <header>
+          <Link to="/husky">Husky</Link>
+          <Link to="/labrador">Labrador</Link>
+          <Link to="/hound">Hound</Link>
+          <Link to="/pug">Pug</Link>
+        </header>
         <h1>Feed</h1>
         {this.renderDogs()}
       </div>

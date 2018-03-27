@@ -1,0 +1,19 @@
+.wrapper {
+  padding: 0 15px;
+}
+
+@media (min-width: 500px) {
+  .wrapper {
+    max-width: 730px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (min-width: 1238px) {
+  .wrapper {
+    max-width: 1236px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
