@@ -26,6 +26,13 @@ class Feed extends Component {
     }
   }
 
+  renderDogs() {
+    const dogs = this.props.dogs.dogs.list || [];
+    return dogs.map(dog => (
+      <Dog image={dog} />
+    ))
+  }
+
   handleChange(e) {
     const { name, value } = e.target;
     this.setState({ [name]: value });
@@ -35,7 +42,7 @@ class Feed extends Component {
     return (
       <div>
         <h1>Feed</h1>
-        <Dog></Dog>
+        {this.renderDogs()}
       </div>
     )
   }
