@@ -1,9 +1,8 @@
 import React from 'react'
+import './DogCard.css'
 
 export default props => (
   <div className='dog'>
-    <div className='dog__image'>
-      <img src={props.image} alt="dog" />
-    </div>
+    <img src={props.image} className='dog__image' alt="dog" />
   </div>
 )

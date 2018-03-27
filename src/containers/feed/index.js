@@ -23,7 +23,7 @@ class Feed extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     const { userToken } = store.getState().auth;
     const { category } = this.state;
     if (userToken) {
@@ -48,14 +48,15 @@ class Feed extends Component {
   render() {
     return (
       <div>
-        <menu>
-          <Link to="/husky">Husky</Link>
-          <Link to="/labrador">Labrador</Link>
-          <Link to="/hound">Hound</Link>
-          <Link to="/pug">Pug</Link>
-        </menu>
-        <h1>Feed</h1>
-        {this.renderDogs()}
+        <ul className='menu'>
+          <li><Link to="/husky">Husky</Link></li>
+          <li><Link to="/labrador">Labrador</Link></li>
+          <li><Link to="/hound">Hound</Link></li>
+          <li><Link to="/pug">Pug</Link></li>
+        </ul>
+        <div className='dogs'>
+          {this.renderDogs()}
+        </div>
       </div>
     )
   }

@@ -7,10 +7,31 @@ header {
   text-align: center;
   font-weight: 600;
 }
-
-.btn {
+.menu {
+  text-align: center;
+  padding: 1em 0;
+  text-transform: uppercase;
+  font-size: 1rem;
 
 }
+  .menu * {
+    color: #000;
+    text-decoration: none;
+  }
+  .menu a:hover {
+    text-decoration: underline;
+  }
+  .menu > li {
+    list-style: none;
+    display: inline-block;
+  }
+  .menu > li:after {
+    content: "/";
+    padding: 0 .5em;
+  }
+  .menu > li:last-child:after {
+    content: "";
+  }
 
 @media (min-width: 500px) {
   .wrapper {
@@ -21,6 +42,9 @@ header {
   header {
     font-size: 2rem;
     padding: 1.5em 0;
+  }
+  .menu {
+    font-size: 1.2rem;
   }
 }
 

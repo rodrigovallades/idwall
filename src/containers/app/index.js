@@ -8,9 +8,7 @@ import './app.css'
 
 const App = () => (
   <div className='wrapper'>
-    <header>
-      THE IDDOG
-    </header>
+    <header>THE IDDOG</header>
     <main>
       <Route exact path="/" component={Signin} />
       <Route exact path="/feed" component={Feed} />

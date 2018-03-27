@@ -6,7 +6,10 @@ const initialState = { dogs: [] };
 export default (state = initialState, action) => {
   switch (action.type) {
     case dogsConstants.DOGS_REQUEST:
-      return state;
+      return {
+        ...state,
+        dogs: []
+      };
     case dogsConstants.DOGS_SUCCESS:
       return {
         ...state,
