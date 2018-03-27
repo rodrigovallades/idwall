@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom'
 
-import Signup from '../signup'
+import Signin from '../signin'
 import Feed from '../feed'
 
 import './app.css'
@@ -12,7 +12,7 @@ const App = () => (
       THE IDDOG
     </header>
     <main>
-      <Route exact path="/" component={Signup} />
+      <Route exact path="/" component={Signin} />
       <Route exact path="/feed" component={Feed} />
       <Route exact path="/husky" render={(props) => ( <Feed category='husky'/> )} />
       <Route exact path="/labrador" render={(props) => ( <Feed category='labrador'/> )} />
