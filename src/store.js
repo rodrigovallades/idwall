@@ -4,7 +4,10 @@ import { routerMiddleware } from 'react-router-redux'
 import thunk from 'redux-thunk'
 import createHistory from 'history/createBrowserHistory'
 import rootReducer from './modules'
+
+// persisting localStorage
 import { localStorageState } from './modules/savestate'
+import throttle from 'lodash/throttle'
 
 export const history = createHistory()
 
@@ -35,10 +38,10 @@ const store = createStore(
   composedEnhancers
 )
 
-store.subscribe(() => {
+store.subscribe(throttle(() => {
   localStorageState.save({
     auth: store.getState().auth
   })
-})
+}, 1000));
 
 export default store

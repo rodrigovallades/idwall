@@ -15,6 +15,7 @@
   "homepage": "https://github.com/rodrigovallades/idwall#readme",
   "dependencies": {
     "history": "^4.7.2",
+    "lodash": "^4.17.5",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.7",
