@@ -1,10 +1,6 @@
 import userConstants from '../constants/user.constants'
 
-export const userService = {
-  login
-};
-
-function login(email) {
+export const login = email => {
   const requestOptions = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

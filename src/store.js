@@ -6,7 +6,7 @@ import createHistory from 'history/createBrowserHistory'
 import rootReducer from './modules'
 
 // persisting localStorage
-import { localStorageState } from './modules/savestate'
+import * as localStorageState from './modules/saveState'
 import throttle from 'lodash/throttle'
 
 export const history = createHistory()

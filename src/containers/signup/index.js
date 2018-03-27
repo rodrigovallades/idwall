@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { login } from '../../modules/login'
 
-class Signup extends React.Component {
+class Signup extends Component {
   constructor(props) {
     super(props);
 
@@ -25,7 +25,7 @@ class Signup extends React.Component {
     e.preventDefault();
 
     this.setState({ submitted: true });
-    const { email } = this.state;    
+    const { email } = this.state;
     if (email) {
       this.props.login(email);
     }

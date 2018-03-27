@@ -1,5 +1,5 @@
 import userConstants from '../constants/user.constants'
-import { userService } from '../services/user.service';
+import * as userService from '../services/user.service';
 
 let user = JSON.parse(localStorage.getItem('user'));
 const initialState = user ? { logged: true, logging: false, user } : { logged: false, loggin: false, user: {}};
