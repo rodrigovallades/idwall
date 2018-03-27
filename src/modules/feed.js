@@ -22,12 +22,12 @@ export default (state = initialState, action) => {
   }
 }
 
-export const getDogs = token => {
+export const getDogs = (token, category) => {
 
   return dispatch => {
     dispatch(request({ token }));
 
-    dogService.get(token)
+    dogService.get(token, category)
       .then(
         dogs => {
           console.log(dogs)

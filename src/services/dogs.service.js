@@ -1,6 +1,6 @@
 import dogsConstants from '../constants/dogs.constants'
 
-export const get = token => {
+export const get = (token, category) => {
   const requestOptions = {
     method: 'GET',
     headers: new Headers({
@@ -9,7 +9,7 @@ export const get = token => {
     })
   };
 
-  return fetch(dogsConstants.DOGS_API, requestOptions)
+  return fetch(`${dogsConstants.DOGS_API}?category=${category}`, requestOptions)
     .then(response => {
       if (!response.ok) {
         return Promise.reject(response.statusText);

@@ -13,23 +13,25 @@ class Feed extends Component {
     super(props);
 
     this.state = {
-      selectedDog: ''
+      category: 'husky',
+      selected: ''
     };
 
     this.handleChange = this.handleChange.bind(this);
   }
 
   componentWillMount() {
-    const userToken = store.getState().auth.userToken;
+    const { userToken } = store.getState().auth;
+    const { category } = this.state;
     if (userToken) {
-      this.props.getDogs(userToken)
+      this.props.getDogs(userToken, category)
     }
   }
 
   renderDogs() {
     const dogs = this.props.dogs.dogs.list || [];
-    return dogs.map(dog => (
-      <Dog image={dog} />
+    return dogs.map((dog, index) => (
+      <Dog image={dog} key={index} />
     ))
   }
 
