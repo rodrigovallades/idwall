@@ -1,8 +1,8 @@
 import userConstants from '../constants/user.constants'
 import * as userService from '../services/user.service';
 
-let user = JSON.parse(localStorage.getItem('user'));
-const initialState = user ? { logged: true, logging: false, user } : { logged: false, loggin: false, user: {}};
+let userToken = JSON.parse(localStorage.getItem('user'));
+const initialState = userToken ? { userToken } : { userToken: '' };
 
 export default (state = initialState, action) => {
   switch (action.type) {
@@ -15,9 +15,14 @@ export default (state = initialState, action) => {
     case userConstants.LOGIN_SUCCESS:
       return {
         ...state,
-        logged: true,
         logging: false,
-        user: action.user.user
+        userToken: action.user.user.token
+      };
+    case userConstants.LOGIN_FAILURE:
+      return {
+        ...state,
+        logging: false,
+        userToken: ''
       };
     default:
       return state

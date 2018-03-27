@@ -45,14 +45,12 @@ class Signup extends Component {
           <button>Login</button>
         </form>
       </div>
-    );
+    )
   }
 }
 
 const mapStateToProps = state => ({
-  logged: state.auth.logged,
-  logging: state.auth.logging,
-  user: state.auth.user
+  userToken: state.auth.userToken
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
