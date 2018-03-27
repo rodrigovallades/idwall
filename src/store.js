@@ -40,8 +40,7 @@ const store = createStore(
 
 store.subscribe(throttle(() => {
   localStorageState.save({
-    auth: store.getState().auth,
-    dogs: store.getState().dogs
+    auth: store.getState().auth
   })
 }, 1000));
 
