@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { getDogs } from '../../modules/feed'
+import { history } from '../../store'
 import Dog from '../../components/DogCard'
 
 import store from '../../store'
@@ -25,6 +26,8 @@ class Feed extends Component {
     const { category } = this.state;
     if (userToken) {
       this.props.getDogs(userToken, category)
+    } else {
+      history.push('/');
     }
   }
 
