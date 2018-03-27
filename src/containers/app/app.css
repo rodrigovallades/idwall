@@ -1,12 +1,26 @@
 .wrapper {
   padding: 0 15px;
 }
+header {
+  font-size: 1.2rem;
+  padding: 1em 0;
+  text-align: center;
+  font-weight: 600;
+}
+
+.btn {
+
+}
 
 @media (min-width: 500px) {
   .wrapper {
     max-width: 730px;
     margin-left: auto;
     margin-right: auto;
+  }
+  header {
+    font-size: 2rem;
+    padding: 1.5em 0;
   }
 }
 

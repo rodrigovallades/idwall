@@ -48,12 +48,12 @@ class Feed extends Component {
   render() {
     return (
       <div>
-        <header>
+        <menu>
           <Link to="/husky">Husky</Link>
           <Link to="/labrador">Labrador</Link>
           <Link to="/hound">Hound</Link>
           <Link to="/pug">Pug</Link>
-        </header>
+        </menu>
         <h1>Feed</h1>
         {this.renderDogs()}
       </div>

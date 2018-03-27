@@ -1,0 +1,39 @@
+.signin {
+  text-align: center;
+}
+
+.signin__email {
+  width: 100%;
+  line-height: 2.8em;
+  border-width: 0 0 2px 0;
+  border-color:  #ccc;
+  border-style: solid;
+  padding: 0 20px 0 50px;
+  font-size: 1.2rem;
+  outline: none;
+}
+
+.signin__wrapper {
+  position: relative;
+}
+.signin__wrapper::before {
+  font-size: 1.4rem;
+  display: block;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  margin-top: -25px;
+  top: 50%;
+  left: 0;
+  position: absolute;
+  font-family: "Font Awesome 5 Free";
+  content: "\f1fa";
+}
+
+@media (min-width: 500px) {
+  .signin__email {
+    line-height: 3em;
+    font-size: 1.35rem;
+  }
+}

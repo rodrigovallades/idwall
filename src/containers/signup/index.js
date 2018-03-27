@@ -36,13 +36,11 @@ class Signup extends Component {
   render() {
     const { email } = this.state;
     return (
-
       <div>
-        <h1>Signup</h1>
-        <p>Signup form</p>
-        <form name="form" onSubmit={this.handleSubmit}>
-          <input type="text" name="email" value={email} onChange={this.handleChange} />
-          <button>Login</button>
+        <form name="form" className="signin" onSubmit={this.handleSubmit}>
+          <div className="signin__wrapper">
+            <input type="text" name="email" className="signin__email" value={email} onChange={this.handleChange} placeholder="Your e-mail" />
+          </div>
         </form>
       </div>
     )
