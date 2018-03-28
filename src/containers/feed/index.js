@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import qs from 'query-string'
 
 import { getDogs, getPicture } from '../../modules/feed'
 import store, { history } from '../../store'
@@ -24,6 +25,12 @@ class Feed extends Component {
   componentWillMount() {
     const { userToken } = store.getState().auth;
     const { category } = this.state;
+    const params = qs.parse(this.props.location.search);
+
+    if (params.category && params.id) {
+      alert('coco');
+    }
+
     if (userToken) {
       this.props.getDogs(userToken, category)
     } else {
