@@ -1,14 +1,14 @@
 import dogsConstants from '../constants/dogs.constants'
 import * as dogService from '../services/dogs.service';
 
-const initialState = { dogs: [] };
+const initialState = { dogs: {} };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case dogsConstants.DOGS_REQUEST:
       return {
         ...state,
-        dogs: []
+        dogs: {}
       };
     case dogsConstants.DOGS_SUCCESS:
       return {
@@ -18,7 +18,7 @@ export default (state = initialState, action) => {
     case dogsConstants.DOGS_FAILURE:
       return {
         ...state,
-        dogs: []
+        dogs: {}
       };
     case dogsConstants.DOGS_PICTURE:
       return {
