@@ -20,13 +20,17 @@ export default (state = initialState, action) => {
         ...state,
         dogs: []
       };
+    case dogsConstants.DOGS_PICTURE:
+      return {
+        ...state,
+        dogs: action.selected,
+      };
     default:
       return state
   }
 }
 
 export const getDogs = (token, category) => {
-
   return dispatch => {
     dispatch(request({ token }));
 
@@ -42,8 +46,16 @@ export const getDogs = (token, category) => {
         }
       );
 
-    function request(user) { return { type: dogsConstants.DOGS_REQUEST, user } }
+    function request(token) { return { type: dogsConstants.DOGS_REQUEST, token } }
     function success(dogs) { return { type: dogsConstants.DOGS_SUCCESS, dogs } }
     function failure(error) { return { type: dogsConstants.DOGS_FAILURE, error } }
+  }
+}
+
+export const getPicture = (id) => {
+  return dispatch => {
+    dispatch(request({ id }));
+
+    function request(selected) { return { type: dogsConstants.DOGS_PICTURE, selected } }
   }
 }

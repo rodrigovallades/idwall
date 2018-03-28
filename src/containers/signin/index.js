@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+
 import { login } from '../../modules/login'
+
+import store, { history } from '../../store'
 
 import './signin.css'
 
@@ -16,6 +19,13 @@ class Signin extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentWillMount() {
+    const { userToken } = store.getState().auth;
+    if (userToken) {
+      history.push('/feed');
+    }
   }
 
   handleChange(e) {

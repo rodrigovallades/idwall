@@ -3,6 +3,6 @@ import './DogCard.css'
 
 export default props => (
   <div className='dog'>
-    <img src={props.image} className='dog__image' alt="dog" />
+    <img src={props.image} className='dog__image' alt="dog" onClick={props.onClick} />
   </div>
 )

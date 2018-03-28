@@ -3,11 +3,9 @@ import { bindActionCreators } from 'redux'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-import { getDogs } from '../../modules/feed'
-import { history } from '../../store'
+import { getDogs, getPicture } from '../../modules/feed'
+import store, { history } from '../../store'
 import Dog from '../../components/DogCard'
-
-import store from '../../store'
 
 import './feed.css'
 
@@ -23,7 +21,7 @@ class Feed extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  componentDidMount() {
+  componentWillMount() {
     const { userToken } = store.getState().auth;
     const { category } = this.state;
     if (userToken) {
@@ -36,7 +34,7 @@ class Feed extends Component {
   renderDogs() {
     const dogs = this.props.dogs.dogs.list || [];
     return dogs.map((dog, index) => (
-      <Dog image={dog} key={index} />
+      <Dog image={dog} key={index} onClick={this.props.getPicture}/>
     ))
   }
 
@@ -67,7 +65,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  getDogs
+  getDogs,
+  getPicture
 }, dispatch)
 
 export default connect(
