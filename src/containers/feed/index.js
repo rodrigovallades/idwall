@@ -14,8 +14,9 @@ class Feed extends Component {
   constructor(props) {
     super(props);
 
+    this.params = {}
     this.state = {
-      category: this.props.category ? this.props.category : 'husky',
+      category: this.props.category,
       selected: ''
     };
 
@@ -24,12 +25,11 @@ class Feed extends Component {
 
   componentWillMount() {
     const { userToken } = store.getState().auth;
-    const { category } = this.state;
-    const params = qs.parse(this.props.location.search);
+    this.params = qs.parse(this.props.location.search);
 
-    if (params.category && params.id) {
-      alert('coco');
-    }
+    const category = this.params.category ? this.params.category : this.state.category
+
+    console.log(this.params)
 
     if (userToken) {
       this.props.getDogs(userToken, category)
@@ -38,11 +38,23 @@ class Feed extends Component {
     }
   }
 
+  openPicture(id) {
+    this.state.category = store.getState().dogs.dogs.category;
+    history.push(`/feed?category=${store.getState().dogs.dogs.category}&id=${id}`);
+  }
+
   renderDogs() {
     const dogs = this.props.dogs.dogs.list || [];
-    return dogs.map((dog, index) => (
-      <Dog image={dog} key={index} onClick={this.props.getPicture}/>
-    ))
+
+    return dogs.map((dog, index) => {
+      let id = dog.split('/')
+      id = id[id.length-1].split('.')
+      id = id[0].split('_')
+      id = id[id.length-1]
+      return (
+        <Dog image={dog} key={index} id={id} onClick={() => this.openPicture(id)}/>
+      )
+    })
   }
 
   handleChange(e) {
