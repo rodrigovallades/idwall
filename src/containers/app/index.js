@@ -16,6 +16,7 @@ const App = () => (
       <Route exact path="/labrador" render={(props) => ( <Feed category='labrador'/> )} />
       <Route exact path="/hound" render={(props) => ( <Feed category='hound'/> )} />
       <Route exact path="/pug" render={(props) => ( <Feed category='pug'/> )} />
+      <Route component={Signin}/>
     </main>
   </div>
 )
