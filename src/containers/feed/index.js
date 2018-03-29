@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import qs from 'query-string'
 
+import * as localStorageState from '../../services/localState.service'
 import { getDogs, getPicture } from '../../modules/feed'
 import store, { history } from '../../store'
 import Dog from '../../components/DogCard'
@@ -24,10 +25,21 @@ class Feed extends Component {
   }
 
   componentWillMount() {
+    const persistedState = localStorageState.load()
+    let category = '';
+
+    if (this.props.category) {
+      category = this.props.category ? this.props.category : this.state.category
+    } else {
+      category = persistedState.dogs.dogs.category ? persistedState.dogs.dogs.category : 'husky';
+    }
+
+    this.setState({ category });
+
     const { userToken } = store.getState().auth;
     this.params = qs.parse(this.props.location.search);
 
-    const category = this.params.category ? this.params.category : this.state.category
+
 
     console.log(this.params)
 

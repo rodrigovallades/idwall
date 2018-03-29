@@ -11,7 +11,7 @@ const App = () => (
     <header>THE IDDOG</header>
     <main>
       <Route exact path="/" component={Signin} />
-      <Route exact path="/feed" render={(props) => ( <Feed {...props} category='husky' /> )} />
+      <Route exact path="/feed" render={(props) => ( <Feed {...props} /> )} />
       <Route exact path="/husky" render={(props) => ( <Feed {...props} category='husky'/> )} />
       <Route exact path="/labrador" render={(props) => ( <Feed {...props} category='labrador' /> )} />
       <Route exact path="/hound" render={(props) => ( <Feed {...props} category='hound'/> )} />
