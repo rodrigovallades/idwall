@@ -17,8 +17,7 @@ class Feed extends Component {
 
     this.params = {}
     this.state = {
-      category: this.props.category,
-      selected: ''
+      category: this.props.category
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -26,22 +25,19 @@ class Feed extends Component {
 
   componentWillMount() {
     const persistedState = localStorageState.load()
+    const { userToken } = store.getState().auth;
     let category = '';
+
+    this.params = qs.parse(this.props.location.search);
 
     if (this.props.category) {
       category = this.props.category ? this.props.category : this.state.category
     } else {
-      category = persistedState.dogs.dogs.category ? persistedState.dogs.dogs.category : 'husky';
+      category = persistedState.dogs && persistedState.dogs.dogs.category ? persistedState.dogs.dogs.category : 'husky';
     }
 
     this.setState({ category });
 
-    const { userToken } = store.getState().auth;
-    this.params = qs.parse(this.props.location.search);
-
-
-
-    console.log(this.params)
 
     if (userToken) {
       this.props.getDogs(userToken, category)
@@ -51,12 +47,23 @@ class Feed extends Component {
   }
 
   openPicture(id) {
-    this.state.category = store.getState().dogs.dogs.category;
+    this.props.getPicture(id)
     history.push(`/feed?category=${store.getState().dogs.dogs.category}&id=${id}`);
   }
 
+  renderSelectedDog() {
+    if (this.params.category && this.params.id) {
+      return (
+        <div>
+          <p>category: {this.params.category}</p>
+          <p>id: {this.props.selected}</p>
+        </div>
+      )
+    }
+  }
+
   renderDogs() {
-    const dogs = this.props.dogs.dogs.list || [];
+    const dogs = (this.props.dogs && this.props.dogs.dogs.list) ?  this.props.dogs.dogs.list : [];
 
     return dogs.map((dog, index) => {
       let id = dog.split('/')
@@ -77,6 +84,7 @@ class Feed extends Component {
   render() {
     return (
       <div>
+        {this.renderSelectedDog()}
         <ul className='menu'>
           <li><Link to="/husky">Husky</Link></li>
           <li><Link to="/labrador">Labrador</Link></li>
@@ -92,7 +100,8 @@ class Feed extends Component {
 }
 
 const mapStateToProps = state => ({
-  dogs: state.dogs
+  dogs: state.dogs,
+  selected: state.dogs.selected
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
