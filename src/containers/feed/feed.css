@@ -2,3 +2,21 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+.dog--preview {
+  display: flex;
+}
+.dog--preview > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (min-width: 500px) {
+  .dog--preview {
+    display: block;
+    position: fixed;
+    left: 10px;
+    top: 10px;
+  }
+}

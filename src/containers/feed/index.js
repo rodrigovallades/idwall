@@ -38,25 +38,31 @@ class Feed extends Component {
 
     this.setState({ category });
 
-
     if (userToken) {
-      this.props.getDogs(userToken, category)
+      if (!this.params.category && !this.params.id) {
+        this.props.getDogs(userToken, category)
+      }
     } else {
       history.push('/');
     }
   }
 
-  openPicture(id) {
-    this.props.getPicture(id)
+  openPicture(id, dog) {
+    this.props.getPicture(id, dog)
     history.push(`/feed?category=${store.getState().dogs.dogs.category}&id=${id}`);
   }
 
   renderSelectedDog() {
     if (this.params.category && this.params.id) {
+      let dogPicture = document.getElementById(this.props.selectedId)
+      if (dogPicture) {
+        dogPicture = dogPicture.getAttribute("src")
+        console.log(dogPicture)
+      }
+
       return (
         <div>
-          <p>category: {this.params.category}</p>
-          <p>id: {this.props.selected}</p>
+          <div className="dog--preview"><img src={dogPicture} /></div>
         </div>
       )
     }
@@ -71,7 +77,7 @@ class Feed extends Component {
       id = id[0].split('_')
       id = id[id.length-1]
       return (
-        <Dog image={dog} key={index} id={id} onClick={() => this.openPicture(id)}/>
+        <Dog image={dog} key={index} id={id} onClick={() => this.openPicture(id, dog)}/>
       )
     })
   }
@@ -101,7 +107,8 @@ class Feed extends Component {
 
 const mapStateToProps = state => ({
   dogs: state.dogs,
-  selected: state.dogs.selected
+  selectedId: state.dogs.selectedId,
+  selectedImg: state.dogs.selecteImg
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({

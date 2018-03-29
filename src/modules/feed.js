@@ -1,7 +1,7 @@
 import dogsConstants from '../constants/dogs.constants'
 import * as dogService from '../services/dogs.service';
 
-const initialState = { dogs: {}, selected: '' };
+const initialState = { dogs: {}, selectedId: '', selectedImg: '' };
 
 export default (state = initialState, action) => {
   switch (action.type) {
@@ -23,7 +23,8 @@ export default (state = initialState, action) => {
     case dogsConstants.DOGS_PICTURE:
       return {
         ...state,
-        selected: action.selected.id,
+        selectedId: action.selected.id,
+        selectedImg: action.selected.dog,
       };
     default:
       return state
@@ -52,9 +53,9 @@ export const getDogs = (token, category) => {
   }
 }
 
-export const getPicture = (id) => {
+export const getPicture = (id, dog) => {
   return dispatch => {
-    dispatch(request({ id }));
+    dispatch(request({ id, dog }));
     function request(selected) { return { type: dogsConstants.DOGS_PICTURE, selected } }
   }
 }
