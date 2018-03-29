@@ -56,8 +56,7 @@ class Feed extends Component {
     if (this.params.category && this.params.id) {
       let dogPicture = document.getElementById(this.props.selectedId)
       if (dogPicture) {
-        dogPicture = dogPicture.getAttribute("src")
-        console.log(dogPicture)
+        dogPicture = dogPicture.getAttribute("src")        
       }
 
       return (
